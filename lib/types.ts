@@ -2,13 +2,18 @@ export interface Parque {
   id: string
   nombre: string
   ubicacion: string
-  total_lotes: number
-  lotes_disponibles: number
-  lotes_vendidos: number
-  lotes_separados: number
-  precio_min: number
-  precio_max: number
-  created_at: string
+  total: number
+  disponibles: number
+  vendidos: number
+  separados: number
+  precioMin: number
+  precioMax: number
+  tamaño: number
+  servicios: string[]
+  descripcion: string
+  coordLatitude: number
+  coordLongitude: number
+  created_at?: string
 }
 
 export interface Lote {
@@ -16,16 +21,44 @@ export interface Lote {
   parque_id: string
   numero: string
   metros: number
-  precio_por_metro: number
-  precio_total: number
+  precio: number
   estado: 'disponible' | 'vendido' | 'separado'
-  created_at: string
+  contacto?: string
+  telefono?: string
+  created_at?: string
 }
 
-export interface Usuario {
+export interface Consulta {
   id: string
-  email: string
   nombre: string
-  telefono?: string
-  created_at: string
+  email: string
+  telefono: string
+  parque_id?: string
+  mensaje: string
+  respondida: boolean
+  respuesta?: string
+  created_at?: string
+}
+
+export interface Reporte {
+  id: string
+  tipo: string
+  datos: Record<string, any>
+  created_at?: string
+}
+
+export interface ArchivosGaleria {
+  id: string
+  nombre: string
+  url: string
+  tipo: string
+  parque_id?: string
+  created_at?: string
+}
+
+export interface ConfiguracionSitio {
+  id: string
+  clave: string
+  valor: string
+  updated_at?: string
 }

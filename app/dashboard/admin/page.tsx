@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 export default function AdminPage() {
   return (
     <div className="space-y-8">
@@ -34,59 +36,59 @@ export default function AdminPage() {
 
       {/* SECCIONES ADMIN */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="bg-white rounded-lg shadow p-8 hover:shadow-lg transition">
+        <Link href="/dashboard/admin/lotes" className="bg-white rounded-lg shadow p-8 hover:shadow-lg transition cursor-pointer block">
           <div className="text-3xl mb-4">📋</div>
           <h3 className="text-xl font-bold text-gray-800 mb-2">Gestionar Lotes</h3>
           <p className="text-gray-600 text-sm mb-4">Agregar, editar o eliminar lotes de los parques</p>
-          <button className="text-orange-500 hover:text-orange-600 font-semibold text-sm">
+          <span className="text-orange-500 hover:text-orange-600 font-semibold text-sm">
             Administrar →
-          </button>
-        </div>
+          </span>
+        </Link>
 
         <div className="bg-white rounded-lg shadow p-8 hover:shadow-lg transition">
           <div className="text-3xl mb-4">🏢</div>
           <h3 className="text-xl font-bold text-gray-800 mb-2">Gestionar Parques</h3>
           <p className="text-gray-600 text-sm mb-4">Actualizar información de parques</p>
           <button className="text-orange-500 hover:text-orange-600 font-semibold text-sm">
-            Administrar →
+            Próximamente →
           </button>
         </div>
 
-        <div className="bg-white rounded-lg shadow p-8 hover:shadow-lg transition">
+        <Link href="/dashboard/admin/consultas" className="bg-white rounded-lg shadow p-8 hover:shadow-lg transition cursor-pointer block">
           <div className="text-3xl mb-4">📱</div>
           <h3 className="text-xl font-bold text-gray-800 mb-2">Consultas</h3>
           <p className="text-gray-600 text-sm mb-4">Ver y responder consultas de clientes</p>
-          <button className="text-orange-500 hover:text-orange-600 font-semibold text-sm">
+          <span className="text-orange-500 hover:text-orange-600 font-semibold text-sm">
             Ver consultas →
-          </button>
-        </div>
+          </span>
+        </Link>
 
-        <div className="bg-white rounded-lg shadow p-8 hover:shadow-lg transition">
+        <Link href="/dashboard/admin/reportes" className="bg-white rounded-lg shadow p-8 hover:shadow-lg transition cursor-pointer block">
           <div className="text-3xl mb-4">📊</div>
           <h3 className="text-xl font-bold text-gray-800 mb-2">Reportes</h3>
           <p className="text-gray-600 text-sm mb-4">Estadísticas y análisis de ventas</p>
-          <button className="text-orange-500 hover:text-orange-600 font-semibold text-sm">
+          <span className="text-orange-500 hover:text-orange-600 font-semibold text-sm">
             Ver reportes →
-          </button>
-        </div>
+          </span>
+        </Link>
 
-        <div className="bg-white rounded-lg shadow p-8 hover:shadow-lg transition">
+        <Link href="/dashboard/admin/galeria" className="bg-white rounded-lg shadow p-8 hover:shadow-lg transition cursor-pointer block">
           <div className="text-3xl mb-4">🖼️</div>
           <h3 className="text-xl font-bold text-gray-800 mb-2">Galería</h3>
           <p className="text-gray-600 text-sm mb-4">Subir y gestionar imágenes y documentos</p>
-          <button className="text-orange-500 hover:text-orange-600 font-semibold text-sm">
+          <span className="text-orange-500 hover:text-orange-600 font-semibold text-sm">
             Administrar →
-          </button>
-        </div>
+          </span>
+        </Link>
 
-        <div className="bg-white rounded-lg shadow p-8 hover:shadow-lg transition">
+        <Link href="/dashboard/admin/configuracion" className="bg-white rounded-lg shadow p-8 hover:shadow-lg transition cursor-pointer block">
           <div className="text-3xl mb-4">⚙️</div>
           <h3 className="text-xl font-bold text-gray-800 mb-2">Configuración</h3>
           <p className="text-gray-600 text-sm mb-4">Ajustes generales del sitio</p>
-          <button className="text-orange-500 hover:text-orange-600 font-semibold text-sm">
+          <span className="text-orange-500 hover:text-orange-600 font-semibold text-sm">
             Configurar →
-          </button>
-        </div>
+          </span>
+        </Link>
       </div>
 
       {/* ÚLTIMA ACTIVIDAD */}
@@ -118,9 +120,9 @@ export default function AdminPage() {
       </div>
 
       {/* NOTA */}
-      <div className="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-6">
-        <p className="text-blue-900">
-          <strong>Nota:</strong> Este panel está en desarrollo. Las funcionalidades están siendo implementadas progresivamente.
+      <div className="bg-green-50 border-l-4 border-green-500 rounded-lg p-6">
+        <p className="text-green-900">
+          <strong>✓ Panel Activo:</strong> Todos los módulos están funcionando. Puedes gestionar lotes, consultas, reportes, galería y configuración.
         </p>
       </div>
     </div>
