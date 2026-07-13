@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 export default function ConfiguracionPage() {
   const [config, setConfig] = useState({
-    nombreSitio: 'TRAKWERK PARQUES INDUSTRIALES',
+    nombreSitio: 'EPICUS PARQUES INDUSTRIALES',
     emailContacto: 'josefraige@gmail.com',
     telefonoWhatsApp: '8184606294',
     horarioInicio: '09:00',

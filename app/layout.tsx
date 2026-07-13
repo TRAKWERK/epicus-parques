@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "TRAKWERK PARQUES INDUSTRIALES",
+  title: "EPICUS PARQUES INDUSTRIALES INDUSTRIALES",
   description: "Terrenos y lotes para tu negocio en Monterrey",
 };
 

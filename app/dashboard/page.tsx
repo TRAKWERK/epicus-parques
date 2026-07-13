@@ -37,7 +37,7 @@ export default function DashboardHome() {
     <div className="space-y-8">
       {/* BIENVENIDA */}
       <section className="bg-gradient-to-r from-orange-500 to-blue-600 text-white rounded-lg p-12 text-center">
-        <h1 className="text-4xl font-bold mb-4">Bienvenido a TRAKWERK PARQUES</h1>
+        <h1 className="text-4xl font-bold mb-4">Bienvenido a EPICUS PARQUES INDUSTRIALES</h1>
         <p className="text-xl opacity-90">Acceso a los mejores lotes industriales de Nuevo León</p>
       </section>
 

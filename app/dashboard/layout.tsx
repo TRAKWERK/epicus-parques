@@ -34,7 +34,7 @@ export default function DashboardLayout({
       <header className="bg-gradient-to-r from-orange-500 to-blue-600 text-white px-6 py-4">
         <div className="flex justify-between items-center max-w-7xl mx-auto">
           <Link href="/dashboard" className="text-2xl font-bold hover:opacity-80">
-            🏭 TRAKWERK PARQUES
+            🏭 EPICUS PARQUES INDUSTRIALES
           </Link>
           <button
             onClick={handleLogout}
@@ -81,7 +81,7 @@ export default function DashboardLayout({
 
       {/* FOOTER */}
       <footer className="bg-gray-800 text-white text-center py-4 text-sm">
-        <p>TRAKWERK PARQUES © 2026 | Parques Industriales Premium | WhatsApp: +52 8184606294</p>
+        <p>EPICUS PARQUES INDUSTRIALES © 2026 | Parques Industriales Premium | WhatsApp: +52 8184606294</p>
       </footer>
     </div>
   )

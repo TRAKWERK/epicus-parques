@@ -34,7 +34,7 @@ export default function HomePage() {
     <div className="min-h-screen flex flex-col">
       {/* HEADER HERO */}
       <div className="bg-gradient-to-r from-orange-500 to-blue-600 text-white py-16 px-4 text-center">
-        <h1 className="text-5xl font-bold mb-4">🏭 TRAKWERK PARQUES</h1>
+        <h1 className="text-5xl font-bold mb-4">🏭 EPICUS PARQUES</h1>
         <p className="text-2xl mb-2">INDUSTRIALES</p>
         <p className="text-lg opacity-90">Plataforma de Venta de Lotes Industriales</p>
       </div>
@@ -84,7 +84,7 @@ export default function HomePage() {
 
       {/* FOOTER */}
       <div className="bg-gray-800 text-white text-center py-4 text-sm">
-        <p>TRAKWERK © 2026 | Parques Industriales Premium</p>
+        <p>EPICUS PARQUES INDUSTRIALES © 2026 | Parques Industriales Premium</p>
       </div>
     </div>
   )
