@@ -1,100 +1,113 @@
 'use client'
 
+import Link from 'next/link'
+
 const PARQUES = [
   {
-    nombre: 'Terra Park Condesa',
-    ubicacion: 'Monterrey, MTY',
-    total: 91,
-    disponibles: 4,
-    vendidos: 86,
-    separados: 1,
-    precioMin: 3400,
-    precioMax: 5500,
+    id: 'epicus',
+    nombre: 'EPICUS INDUSTRIAL',
+    ubicacion: 'Monterrey, Nuevo León',
+    total: 45,
+    disponibles: 12,
+    vendidos: 28,
+    separados: 5,
+    precioMin: 1800000,
+    precioMax: 8500000,
+    tamaño: '45 hectáreas',
+    servicios: ['Seguridad 24/7', 'Acceso de carga', 'Agua y drenaje', 'Energía trifásica'],
+    descripcion: 'Parque industrial moderno con infraestructura completa y ubicación estratégica'
   },
   {
-    nombre: 'Terra Park García II',
-    ubicacion: 'García, MTY',
-    total: 88,
-    disponibles: 46,
-    vendidos: 0,
-    separados: 0,
-    precioMin: 4800,
-    precioMax: 5100,
+    id: 'terra-regia',
+    nombre: 'TERRA REGIA',
+    ubicacion: 'Salinas, Nuevo León',
+    total: 58,
+    disponibles: 28,
+    vendidos: 25,
+    separados: 5,
+    precioMin: 2200000,
+    precioMax: 12000000,
+    tamaño: '58 hectáreas',
+    servicios: ['Seguridad electrónica', 'Áreas verdes', 'Agua potable', 'Fibra óptica'],
+    descripcion: 'Desarrollo inmobiliario industrial premium con servicios de clase mundial'
   },
   {
-    nombre: 'Terra Park Salinas',
-    ubicacion: 'Salinas, MTY',
-    total: 8,
-    disponibles: 6,
-    vendidos: 1,
-    separados: 1,
-    precioMin: 2000,
-    precioMax: 3350,
-  },
-  {
-    nombre: 'Terra Park Santa Catarina III',
-    ubicacion: 'Santa Catarina, MTY',
-    total: 2,
-    disponibles: 2,
-    vendidos: 0,
-    separados: 0,
-    precioMin: 5200,
-    precioMax: 5400,
-  },
-  {
-    nombre: 'Terra Park Santa Catarina IV',
-    ubicacion: 'Santa Catarina, MTY',
-    total: 2,
-    disponibles: 2,
-    vendidos: 0,
-    separados: 0,
-    precioMin: 5600,
-    precioMax: 11000,
-  },
+    id: 'palmar-ii',
+    nombre: 'PALMAR II',
+    ubicacion: 'Monterrey, Nuevo León',
+    total: 34,
+    disponibles: 15,
+    vendidos: 16,
+    separados: 3,
+    precioMin: 2000000,
+    precioMax: 10500000,
+    tamaño: '34 hectáreas',
+    servicios: ['Acceso principal', 'Drenaje sanitario', 'Caseta de vigilancia', 'Vías de acceso pavimentadas'],
+    descripcion: 'Parque consolidado con excelente accesibilidad a principales vías'
+  }
 ]
 
 export default function ParquesPage() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold text-gray-800 mb-6">🗺️ TERRA PARK - Parques Disponibles</h2>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-4xl font-bold text-gray-800 mb-2">Parques Industriales</h1>
+        <p className="text-gray-600">Descubre nuestros 3 parques industriales premium</p>
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {PARQUES.map((parque) => (
-          <div key={parque.nombre} className="bg-white rounded-lg shadow-lg hover:shadow-xl transition border-t-4 border-orange-500">
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-800 mb-2">{parque.nombre}</h3>
-              <p className="text-gray-600 text-sm mb-4">📍 {parque.ubicacion}</p>
+          <Link key={parque.id} href={`/dashboard/parques/${parque.id}`}>
+            <div className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition overflow-hidden cursor-pointer transform hover:scale-105">
+              {/* Header color */}
+              <div className="h-24 bg-gradient-to-r from-orange-500 to-blue-600"></div>
 
-              <div className="space-y-2 mb-4 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Total Lotes:</span>
-                  <span className="font-semibold">{parque.total}</span>
+              {/* Content */}
+              <div className="p-6">
+                <h2 className="text-2xl font-bold text-gray-800 mb-2">{parque.nombre}</h2>
+                <p className="text-gray-600 text-sm mb-4">📍 {parque.ubicacion}</p>
+
+                {/* Estadísticas */}
+                <div className="grid grid-cols-2 gap-3 mb-6">
+                  <div className="bg-blue-50 rounded p-3">
+                    <div className="text-xs text-gray-600">Total</div>
+                    <div className="text-2xl font-bold text-blue-600">{parque.total}</div>
+                  </div>
+                  <div className="bg-green-50 rounded p-3">
+                    <div className="text-xs text-gray-600">Disponibles</div>
+                    <div className="text-2xl font-bold text-green-600">{parque.disponibles}</div>
+                  </div>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-green-600">✅ Disponibles:</span>
-                  <span className="font-semibold text-green-600">{parque.disponibles}</span>
+
+                {/* Descripción */}
+                <p className="text-gray-600 text-sm mb-4 line-clamp-2">{parque.descripcion}</p>
+
+                {/* Servicios */}
+                <div className="mb-4">
+                  <p className="text-xs font-semibold text-gray-700 mb-2">Servicios:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {parque.servicios.slice(0, 2).map((s, i) => (
+                      <span key={i} className="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-red-600">❌ Vendidos:</span>
-                  <span className="font-semibold text-red-600">{parque.vendidos}</span>
+
+                {/* Precio */}
+                <div className="border-t pt-4">
+                  <p className="text-sm text-gray-600 mb-2">Rango de precios:</p>
+                  <p className="text-lg font-bold text-orange-600">
+                    ${(parque.precioMin / 1000000).toFixed(1)}M - ${(parque.precioMax / 1000000).toFixed(1)}M
+                  </p>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-yellow-600">⏳ Separados:</span>
-                  <span className="font-semibold text-yellow-600">{parque.separados}</span>
-                </div>
-                <div className="border-t pt-2 mt-2 flex justify-between">
-                  <span className="text-gray-600">Rango de Precios:</span>
-                  <span className="font-semibold text-orange-500">
-                    ${parque.precioMin.toLocaleString('es-MX')} - ${parque.precioMax.toLocaleString('es-MX')}/m²
-                  </span>
-                </div>
+
+                <button className="w-full mt-4 bg-orange-500 text-white font-bold py-2 rounded-lg hover:bg-orange-600 transition">
+                  Ver ficha completa →
+                </button>
               </div>
-
-              <button className="w-full py-2 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition">
-                Ver Detalles
-              </button>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

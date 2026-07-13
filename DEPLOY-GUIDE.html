@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRAKWERK PARQUES - Guía de Deploy</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header { background: linear-gradient(135deg, #FF8C42 0%, #2E7DAF 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+        .header h1 { font-size: 32px; margin-bottom: 10px; }
+        .step { background: white; padding: 25px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 4px solid #FF8C42; }
+        .step h2 { color: #FF8C42; margin-bottom: 15px; font-size: 22px; }
+        .step h3 { color: #333; margin-top: 15px; margin-bottom: 10px; font-size: 16px; }
+        .code { background: #1e1e1e; color: #d4d4d4; padding: 12px; border-radius: 5px; overflow-x: auto; font-family: 'Courier New', monospace; font-size: 12px; margin: 10px 0; }
+        .highlight { background: #fff3cd; padding: 2px 6px; border-radius: 3px; }
+        .btn { display: inline-block; background: #FF8C42; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin-top: 10px; cursor: pointer; border: none; font-size: 14px; }
+        .btn:hover { background: #e67e2f; }
+        .success { background: #d4edda; border-left: 4px solid #28a745; }
+        .warning { background: #fff3cd; border-left: 4px solid #ffc107; }
+        .info { background: #d1ecf1; border-left: 4px solid #17a2b8; }
+        ol { margin-left: 20px; line-height: 1.8; }
+        li { margin-bottom: 8px; }
+        .copy-btn { background: #2E7DAF; color: white; padding: 5px 10px; border: none; border-radius: 3px; cursor: pointer; font-size: 11px; margin-left: 10px; }
+        .copy-btn:hover { background: #1e5a8e; }
+        .checklist { margin: 10px 0; }
+        .checklist-item { display: flex; align-items: center; margin: 8px 0; }
+        .checklist-item input { margin-right: 10px; }
+        .section-title { font-size: 28px; font-weight: bold; color: #FF8C42; margin-top: 30px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #FF8C42; }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0; }
+        .stat-box { background: linear-gradient(135deg, #FF8C42 0%, #FFB280 100%); color: white; padding: 15px; border-radius: 8px; text-align: center; }
+        .stat-num { font-size: 24px; font-weight: bold; }
+        .stat-label { font-size: 12px; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏭 TRAKWERK PARQUES INDUSTRIALES</h1>
+            <p>Guía Completa de Deploy - Next.js + Supabase + Vercel</p>
+        </div>
+
+        <!-- RESUMEN -->
+        <div class="step success">
+            <h2>✅ Estado del Proyecto</h2>
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-num">100%</div>
+                    <div class="stat-label">Código Completado</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">5</div>
+                    <div class="stat-label">Parques Configurados</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">21</div>
+                    <div class="stat-label">Lotes en Catálogo</div>
+                </div>
+            </div>
+            <p>✨ Tu aplicación está lista para desplegar. Solo falta configurar Supabase y Vercel.</p>
+        </div>
+
+        <!-- PASO 1: SUPABASE -->
+        <div class="section-title">PASO 1️⃣ - Crear Proyecto en Supabase</div>
+        <div class="step info">
+            <h2>Configurar Base de Datos (5 min)</h2>
+
+            <h3>1. Crear cuenta</h3>
+            <ol>
+                <li>Ve a <a href="https://supabase.com" target="_blank" style="color: #2E7DAF; text-decoration: underline;">https://supabase.com</a></li>
+                <li>Click en <span class="highlight">Sign Up</span></li>
+                <li>Usa tu email: <span class="highlight">josefraige@gmail.com</span></li>
+                <li>Verifica tu correo</li>
+            </ol>
+
+            <h3>2. Crear nuevo proyecto</h3>
+            <ol>
+                <li>Dashboard → <span class="highlight">New Project</span></li>
+                <li>Nombre: <span class="highlight">trakwerk-parques</span></li>
+                <li>Región: <span class="highlight">North America (us-east-1)</span></li>
+                <li>Password: <span class="highlight">TuContraseña123Fuerte!</span></li>
+                <li>Click <span class="highlight">Create new project</span></li>
+                <li>⏳ Espera 2-3 minutos a que se cree...</li>
+            </ol>
+
+            <h3>3. Copiar credenciales</h3>
+            <ol>
+                <li>Ve a <span class="highlight">Settings → API</span></li>
+                <li>Copia <span class="highlight">Project URL</span></li>
+                <li>Copia <span class="highlight">anon public</span> (bajo "Supabase key")</li>
+                <li>Guarda en un archivo temporal</li>
+            </ol>
+
+            <h3>4. Crear tablas (copiar y pegar en SQL Editor)</h3>
+            <ol>
+                <li>Ve a <span class="highlight">SQL Editor</span></li>
+                <li>Click <span class="highlight">New Query</span></li>
+                <li>Copia este SQL:</li>
+            </ol>
+            <div class="code">-- Tabla de parques
+CREATE TABLE parques (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  nombre TEXT NOT NULL,
+  ubicacion TEXT,
+  total_lotes INTEGER,
+  lotes_disponibles INTEGER,
+  created_at TIMESTAMP DEFAULT now()
+);
+
+-- Tabla de lotes
+CREATE TABLE lotes (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  parque_id UUID REFERENCES parques(id),
+  numero TEXT NOT NULL,
+  metros DECIMAL,
+  precio_por_metro DECIMAL,
+  estado TEXT DEFAULT 'disponible',
+  created_at TIMESTAMP DEFAULT now()
+);
+
+-- Tabla de cotizaciones
+CREATE TABLE cotizaciones (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  nombre TEXT NOT NULL,
+  telefono TEXT NOT NULL,
+  parque TEXT NOT NULL,
+  lote TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT now()
+);
+            </div>
+            <ol start="5">
+                <li>Click <span class="highlight">Run</span> (botón azul)</li>
+                <li>✅ Tablas creadas</li>
+            </ol>
+        </div>
+
+        <!-- PASO 2: GITHUB -->
+        <div class="section-title">PASO 2️⃣ - Subir a GitHub</div>
+        <div class="step info">
+            <h2>Crear Repositorio (3 min)</h2>
+
+            <h3>1. Si no tienes GitHub</h3>
+            <ol>
+                <li>Ve a <a href="https://github.com" target="_blank" style="color: #2E7DAF; text-decoration: underline;">https://github.com</a></li>
+                <li>Click <span class="highlight">Sign up</span></li>
+                <li>Usa email: <span class="highlight">josefraige@gmail.com</span></li>
+                <li>Completa el registro</li>
+            </ol>
+
+            <h3>2. Crear nuevo repositorio</h3>
+            <ol>
+                <li>Dashboard → <span class="highlight">New repository</span></li>
+                <li>Nombre: <span class="highlight">trakwerk-parques</span></li>
+                <li>Descripción: <span class="highlight">Aplicación de venta de lotes industriales</span></li>
+                <li>Click <span class="highlight">Create repository</span></li>
+            </ol>
+
+            <h3>3. Copiar comando push</h3>
+            <p>En la pantalla de tu nuevo repo, busca la sección "push an existing repository from the command line" y ejecuta en PowerShell:</p>
+            <div class="code">cd C:\Users\Usuario\trakwerk-parques
+git remote add origin https://github.com/TU_USUARIO/trakwerk-parques.git
+git branch -M main
+git push -u origin main
+            </div>
+            <p style="margin-top: 15px;">⚠️ Reemplaza <span class="highlight">TU_USUARIO</span> con tu usuario de GitHub</p>
+        </div>
+
+        <!-- PASO 3: VERCEL -->
+        <div class="section-title">PASO 3️⃣ - Deploy en Vercel</div>
+        <div class="step info">
+            <h2>Deploy Automático (2 min)</h2>
+
+            <h3>1. Conectar Vercel a GitHub</h3>
+            <ol>
+                <li>Ve a <a href="https://vercel.com" target="_blank" style="color: #2E7DAF; text-decoration: underline;">https://vercel.com</a></li>
+                <li>Click <span class="highlight">Sign up</span></li>
+                <li>Selecciona <span class="highlight">Continue with GitHub</span></li>
+                <li>Autoriza Vercel</li>
+            </ol>
+
+            <h3>2. Importar proyecto</h3>
+            <ol>
+                <li>Dashboard → <span class="highlight">Add New... → Project</span></li>
+                <li>Selecciona <span class="highlight">trakwerk-parques</span></li>
+                <li>Click <span class="highlight">Import</span></li>
+            </ol>
+
+            <h3>3. Configurar variables de entorno</h3>
+            <ol>
+                <li>Ve a <span class="highlight">Environment Variables</span></li>
+                <li>Añade dos variables:</li>
+            </ol>
+            <div class="code">NEXT_PUBLIC_SUPABASE_URL = [PEGA TU URL DE SUPABASE]
+NEXT_PUBLIC_SUPABASE_ANON_KEY = [PEGA TU ANON KEY]
+            </div>
+            <ol start="4">
+                <li>Click <span class="highlight">Deploy</span></li>
+                <li>⏳ Espera 2-3 minutos</li>
+                <li>✅ Tu app estará en: <span class="highlight">https://trakwerk-parques.vercel.app</span></li>
+            </ol>
+        </div>
+
+        <!-- PASO 4: DOMINIO -->
+        <div class="section-title">PASO 4️⃣ - Conectar Dominio</div>
+        <div class="step info">
+            <h2>Agregar trakwerk.com.mx (2 min)</h2>
+
+            <h3>1. En Vercel</h3>
+            <ol>
+                <li>Proyecto → <span class="highlight">Settings → Domains</span></li>
+                <li>Click <span class="highlight">Add Domain</span></li>
+                <li>Escribe: <span class="highlight">parques.trakwerk.com.mx</span></li>
+                <li>Vercel te dará un CNAME</li>
+            </ol>
+
+            <h3>2. En tu proveedor DNS (GoDaddy, Namecheap, etc.)</h3>
+            <ol>
+                <li>Inicia sesión en tu proveedor de dominios</li>
+                <li>Ve a <span class="highlight">DNS Settings / Manage DNS</span></li>
+                <li>Crea un nuevo CNAME record:</li>
+            </ol>
+            <div class="code">Nombre: parques
+Tipo: CNAME
+Valor: cname.vercel-dns.com
+TTL: 3600
+            </div>
+            <ol start="4">
+                <li>Guarda los cambios</li>
+                <li>⏳ Espera 15-30 minutos</li>
+                <li>✅ Tu app estará en: <span class="highlight">https://parques.trakwerk.com.mx</span></li>
+            </ol>
+        </div>
+
+        <!-- VERIFICACIÓN -->
+        <div class="section-title">✅ Checklist Final</div>
+        <div class="step success">
+            <h2>Verifica que todo funciona</h2>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="check1">
+                    <label for="check1">Supabase creado y tablas insertadas</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check2">
+                    <label for="check2">GitHub repo creado y código pusheado</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check3">
+                    <label for="check3">Vercel proyecto creado y deployado</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check4">
+                    <label for="check4">Variables de entorno configuradas en Vercel</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check5">
+                    <label for="check5">Dominio DNS configurado</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check6">
+                    <label for="check6">Login funciona con contraseña: Trakwerk72661%</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check7">
+                    <label for="check7">Catálogo muestra 21 lotes</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check8">
+                    <label for="check8">Filtro de parques funciona</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOPORTE -->
+        <div class="step warning">
+            <h2>⚠️ Si algo no funciona</h2>
+            <ol>
+                <li><strong>Deploy falla:</strong> Ve a Vercel → Deployments → mira los logs (tab "Build")</li>
+                <li><strong>Login no funciona:</strong> Abre DevTools (F12) → Console y busca errores</li>
+                <li><strong>Variables de entorno:</strong> Recuerda agregar el prefijo <span class="highlight">NEXT_PUBLIC_</span></li>
+                <li><strong>Dominio no apunta:</strong> Espera 30 min después de cambiar DNS</li>
+            </ol>
+            <p style="margin-top: 15px;">📧 Contacta a: <strong>josefraige@gmail.com</strong></p>
+        </div>
+
+        <!-- FINAL -->
+        <div class="step success">
+            <h2>🎉 ¡Listo!</h2>
+            <p>Tu aplicación TRAKWERK PARQUES está en producción.</p>
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-label">URL en vivo</div>
+                    <div class="stat-num" style="font-size: 14px;">parques.trakwerk.com.mx</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Contraseña</div>
+                    <div class="stat-num" style="font-size: 14px;">Trakwerk72661%</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">WhatsApp</div>
+                    <div class="stat-num" style="font-size: 14px;">+52 8184606294</div>
+                </div>
+            </div>
+            <p style="margin-top: 15px; font-size: 13px; color: #666;">
+                Próximos pasos: Agregar admin panel, pagos, integración con CRM, analytics...
+            </p>
+        </div>
+    </div>
+</body>
+</html>

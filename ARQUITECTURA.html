@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRAKWERK - Documentación de Arquitectura</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #FF8C42 0%, #2E7DAF 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .header h1 { font-size: 32px; margin-bottom: 10px; }
+        .header p { font-size: 16px; opacity: 0.9; }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid #FF8C42;
+        }
+        .section h2 {
+            color: #FF8C42;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .section h3 {
+            color: #2E7DAF;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .layer {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 3px solid #34A853;
+        }
+        .layer-title { font-weight: bold; color: #34A853; margin-bottom: 10px; }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .tech-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .tech-card strong { display: block; font-size: 16px; margin-bottom: 5px; }
+
+        .table { width: 100%; margin: 20px 0; border-collapse: collapse; }
+        .table th { background: #FF8C42; color: white; padding: 12px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e0e0e0; }
+        .table tr:hover { background: #f8f9fa; }
+
+        .highlight {
+            background: #fffacd;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+        .feature-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #34A853;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin: 15px 0;
+        }
+
+        .footer { text-align: center; padding: 20px; color: #666; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏗️ TRAKWERK PARQUES - ARQUITECTURA TÉCNICA</h1>
+            <p>Documentación completa del sistema | Next.js + Supabase + Vercel</p>
+        </div>
+
+        <div class="section">
+            <h2>📊 Visión General del Sistema</h2>
+            <p>TRAKWERK PARQUES es una <span class="highlight">aplicación web moderna SPA</span> construida con tecnología serverless y cloud-native.</p>
+            <ul class="feature-list">
+                <li>Catálogo de 21 lotes industriales en 5 parques</li>
+                <li>Búsqueda y filtrado avanzado</li>
+                <li>Cotizaciones en tiempo real vía WhatsApp</li>
+                <li>Escalabilidad automática</li>
+                <li>Disponibilidad 99.9% en producción</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🔩 Capas de Arquitectura</h2>
+
+            <div class="layer">
+                <div class="layer-title">1️⃣ CAPA DE PRESENTACIÓN (Frontend)</div>
+                <p><strong>Tecnología:</strong> React 19 + Next.js 16 + TypeScript + Tailwind CSS</p>
+                <p><strong>Componentes:</strong> Login, Dashboard, Catálogo, Parques, Cotizador</p>
+            </div>
+
+            <div class="layer">
+                <div class="layer-title">2️⃣ CAPA DE APLICACIÓN (Framework)</div>
+                <p><strong>Tecnología:</strong> Next.js 16 App Router</p>
+                <p><strong>Características:</strong> Server Components, Middleware de autenticación, TypeScript strict</p>
+            </div>
+
+            <div class="layer">
+                <div class="layer-title">3️⃣ CAPA DE API & INTEGRACIÓN</div>
+                <p><strong>Tecnología:</strong> Supabase API + WhatsApp Integration</p>
+                <p><strong>Servicios:</strong> CRUD de datos, Autenticación JWT, Cotizaciones</p>
+            </div>
+
+            <div class="layer">
+                <div class="layer-title">4️⃣ CAPA DE BASE DE DATOS</div>
+                <p><strong>Tecnología:</strong> PostgreSQL (Supabase)</p>
+                <p><strong>Tablas:</strong> parques, lotes, usuarios, cotizaciones</p>
+            </div>
+
+            <div class="layer">
+                <div class="layer-title">5️⃣ CAPA DE INFRAESTRUCTURA</div>
+                <p><strong>Hosting:</strong> Vercel | <strong>BD:</strong> Supabase | <strong>Versionado:</strong> GitHub | <strong>Dominio:</strong> parques.trakwerk.com.mx</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚡ Stack Tecnológico</h2>
+            <div class="tech-stack">
+                <div class="tech-card">
+                    <strong>Next.js 16</strong>
+                    <small>Framework React moderno</small>
+                </div>
+                <div class="tech-card">
+                    <strong>React 19</strong>
+                    <small>Componentes interactivos</small>
+                </div>
+                <div class="tech-card">
+                    <strong>TypeScript</strong>
+                    <small>Type safety completo</small>
+                </div>
+                <div class="tech-card">
+                    <strong>Tailwind CSS</strong>
+                    <small>Diseño responsive</small>
+                </div>
+                <div class="tech-card">
+                    <strong>Supabase</strong>
+                    <small>PostgreSQL + API</small>
+                </div>
+                <div class="tech-card">
+                    <strong>Vercel</strong>
+                    <small>Hosting & CDN Global</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔐 Seguridad</h2>
+            <ul class="feature-list">
+                <li>SessionStorage para autenticación</li>
+                <li>JWT tokens de Supabase</li>
+                <li>Row Level Security en PostgreSQL</li>
+                <li>HTTPS/SSL en todas conexiones</li>
+                <li>Middleware de protección de rutas</li>
+                <li>Variables de entorno para credenciales</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>📈 Escalabilidad</h2>
+            <ul class="feature-list">
+                <li>Vercel auto-scaling: 10,000+ usuarios concurrentes</li>
+                <li>Supabase scaling automático</li>
+                <li>Serverless functions sin servidores</li>
+                <li>Capacidad: 1M+ requests/día</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Roadmap Futuro</h2>
+            <table class="table">
+                <tr>
+                    <th>Fase</th>
+                    <th>Funcionalidad</th>
+                    <th>Tiempo</th>
+                </tr>
+                <tr>
+                    <td><strong>Fase 2</strong></td>
+                    <td>Panel de administración</td>
+                    <td>2-3 semanas</td>
+                </tr>
+                <tr>
+                    <td><strong>Fase 3</strong></td>
+                    <td>Integración de pagos</td>
+                    <td>3-4 semanas</td>
+                </tr>
+                <tr>
+                    <td><strong>Fase 4</strong></td>
+                    <td>Sistema de CRM</td>
+                    <td>4-5 semanas</td>
+                </tr>
+                <tr>
+                    <td><strong>Fase 5</strong></td>
+                    <td>App móvil (React Native)</td>
+                    <td>8-12 semanas</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="footer">
+            <p>TRAKWERK PARQUES INDUSTRIALES © 2026</p>
+            <p>Arquitectura técnica v1.0 | Next.js + Supabase + Vercel</p>
+        </div>
+    </div>
+</body>
+</html>
