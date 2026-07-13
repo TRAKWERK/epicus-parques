@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TRAKWERK PARQUES INDUSTRIALES - Next.js + Supabase
 
-## Getting Started
+Aplicación moderna de venta de lotes industriales con Next.js, Tailwind CSS y Supabase.
 
-First, run the development server:
+## 🚀 Inicio Rápido
 
+### 1. Instalar dependencias
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configurar Supabase
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Ve a [supabase.com](https://supabase.com) y crea una cuenta
+2. Crea un nuevo proyecto
+3. Copia tu **URL** y **ANON KEY** de la sección API (Settings > API)
+4. Reemplaza los valores en `.env.local`:
+```
+NEXT_PUBLIC_SUPABASE_URL=tu_url_aqui
+NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_key_aqui
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Ejecutar en desarrollo
+```bash
+npm run dev
+```
 
-## Learn More
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
-To learn more about Next.js, take a look at the following resources:
+**Contraseña de Login:** `Trakwerk72661%`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📋 Funcionalidades
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- ✅ Login con contraseña
+- ✅ Catálogo de lotes con filtros
+- ✅ Vista de parques disponibles
+- ✅ Formulario de cotización vía WhatsApp
+- ✅ Estadísticas en tiempo real
+- ✅ Interfaz responsiva
 
-## Deploy on Vercel
+## 📁 Estructura
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+app/
+├── page.tsx (Login)
+└── dashboard/
+    ├── page.tsx (Home)
+    ├── catalogo/page.tsx
+    ├── parques/page.tsx
+    └── cotizador/page.tsx
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔐 Credenciales
+
+- **Contraseña:** `Trakwerk72661%`
+- **WhatsApp:** +52 8184606294
