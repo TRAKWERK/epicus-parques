@@ -162,7 +162,7 @@ export default function HomePage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Link href="/dashboard/parques">
+              <Link href="/#parques">
                 <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold text-white transition transform hover:scale-105">
                   Ver Todos los Parques
                 </button>
@@ -258,7 +258,7 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {parques.map((parque) => (
-            <Link key={parque.id} href={`/dashboard/parques/${parque.id}`}>
+            <Link key={parque.id} href={`/parques/${parque.id}`}>
               <div className="h-full bg-white rounded-xl shadow-md hover:shadow-2xl transition transform hover:scale-105 cursor-pointer overflow-hidden group">
                 <div className={`bg-gradient-to-br ${parque.color} text-white p-8 text-center`}>
                   <div className="text-5xl mb-4">{parque.imagen}</div>
@@ -322,7 +322,7 @@ export default function HomePage() {
                 <p className="text-sm text-gray-500 mb-4">{listing.area}</p>
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                   <span className="text-lg font-bold text-blue-600">{listing.precio}</span>
-                  <Link href={`/dashboard/parques/${listing.parque.toLowerCase()}`}>
+                  <Link href={`/parques/${listing.parque.toLowerCase()}`}>
                     <button className="text-blue-600 hover:text-blue-700 font-semibold text-sm">
                       Ver →
                     </button>
@@ -457,7 +457,7 @@ export default function HomePage() {
             <div>
               <h4 className="text-white font-bold mb-4">Acceso Rápido</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/dashboard/parques" className="hover:text-white transition">Parques</Link></li>
+                <li><Link href="/#parques" className="hover:text-white transition">Parques</Link></li>
                 <li><Link href="/dashboard/catalogo" className="hover:text-white transition">Catálogo de Lotes</Link></li>
                 <li><Link href="/dashboard/mapa" className="hover:text-white transition">Mapa Interactivo</Link></li>
                 <li><Link href="/dashboard/comparador" className="hover:text-white transition">Comparador</Link></li>
