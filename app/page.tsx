@@ -21,7 +21,7 @@ export default function HomePage() {
     setError('')
     setIsLoading(true)
 
-    if (password === 'admin') {
+    if (password === '123456') {
       localStorage.setItem('auth_token', 'authenticated')
       router.push('/dashboard')
     } else {
