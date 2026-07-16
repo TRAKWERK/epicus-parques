@@ -15,11 +15,12 @@ const PARQUES_DETALLE = {
     servicios: ['Seguridad 24/7', 'Acceso de carga', 'Agua y drenaje', 'Energía trifásica', 'Vías pavimentadas', 'Área verde'],
     infraestructura: ['Caseta de vigilancia', 'Portería electrónica', 'Calles iluminadas', 'Drenaje pluvial', 'Red de agua'],
     ventajas: ['Acceso principal privilegiado', 'Zona de expansión industrial', 'Servicios completos', 'Financiamiento disponible'],
-    lotes: [
-      { numero: 'E-001', metros: 1250, precio: 1800000, estado: 'Disponible' },
-      { numero: 'E-002', metros: 1500, precio: 2100000, estado: 'Disponible' },
-      { numero: 'E-003', metros: 2000, precio: 2800000, estado: 'Disponible' }
-    ]
+    lotes: Array.from({ length: 45 }, (_, i) => ({
+      numero: `E-${String(i + 1).padStart(3, '0')}`,
+      metros: 1200 + (i % 5) * 300,
+      precio: 1800000 + (i % 5) * 400000,
+      estado: i < 12 ? 'Disponible' : i < 33 ? 'Vendido' : 'Separado'
+    }))
   },
   'terra-regia': {
     nombre: 'TERRA REGIA',
@@ -32,11 +33,12 @@ const PARQUES_DETALLE = {
     servicios: ['Seguridad electrónica', 'Áreas verdes', 'Agua potable', 'Fibra óptica', 'Gasoducto', 'Saneamiento'],
     infraestructura: ['Centro de control', 'Subestación eléctrica', 'Planta tratamiento agua', 'Sistema alarma', 'Mantenimiento'],
     ventajas: ['Premium location', 'Servicios de clase mundial', 'Financiamiento flexible', 'Rentabilidad garantizada'],
-    lotes: [
-      { numero: 'TR-001', metros: 2500, precio: 2200000, estado: 'Disponible' },
-      { numero: 'TR-002', metros: 3000, precio: 3000000, estado: 'Disponible' },
-      { numero: 'TR-003', metros: 3500, precio: 4200000, estado: 'Disponible' }
-    ]
+    lotes: Array.from({ length: 58 }, (_, i) => ({
+      numero: `TR-${String(i + 1).padStart(3, '0')}`,
+      metros: 2400 + (i % 6) * 400,
+      precio: 2200000 + (i % 6) * 500000,
+      estado: i < 28 ? 'Disponible' : i < 49 ? 'Vendido' : 'Separado'
+    }))
   },
   'palmar-ii': {
     nombre: 'PALMAR II',
@@ -49,11 +51,12 @@ const PARQUES_DETALLE = {
     servicios: ['Acceso principal', 'Drenaje sanitario', 'Caseta vigilancia', 'Vías pavimentadas', 'Agua potable', 'Energía'],
     infraestructura: ['Portería, Control de acceso', 'Sistemas de vigilancia', 'Iluminación LED', 'Mantenimiento vías', 'Seguridad perimetral'],
     ventajas: ['Excelente accesibilidad', 'Precios competitivos', 'Ubicación consolidada', 'Crecimiento garantizado'],
-    lotes: [
-      { numero: 'P2-001', metros: 1800, precio: 2000000, estado: 'Disponible' },
-      { numero: 'P2-002', metros: 2200, precio: 2500000, estado: 'Disponible' },
-      { numero: 'P2-003', metros: 2800, precio: 3200000, estado: 'Disponible' }
-    ]
+    lotes: Array.from({ length: 34 }, (_, i) => ({
+      numero: `P2-${String(i + 1).padStart(3, '0')}`,
+      metros: 1700 + (i % 5) * 350,
+      precio: 2000000 + (i % 5) * 350000,
+      estado: i < 15 ? 'Disponible' : i < 26 ? 'Vendido' : 'Separado'
+    }))
   }
 }
 
@@ -154,7 +157,7 @@ export default function ParqueFichaPage() {
 
       {/* LOTES DISPONIBLES */}
       <section className="bg-white rounded-lg shadow p-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">Lotes Disponibles (Muestra)</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-6">Lotes ({parque.lotes.length} total)</h2>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="bg-orange-500 text-white">
@@ -166,18 +169,23 @@ export default function ParqueFichaPage() {
               </tr>
             </thead>
             <tbody>
-              {parque.lotes.map((lote, i) => (
-                <tr key={i} className="border-b hover:bg-gray-50">
-                  <td className="px-4 py-2 font-semibold">{lote.numero}</td>
-                  <td className="px-4 py-2">{lote.metros} m²</td>
-                  <td className="px-4 py-2">${(lote.precio / 1000000).toFixed(2)}M</td>
-                  <td className="px-4 py-2">
-                    <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
-                      {lote.estado}
-                    </span>
-                  </td>
-                </tr>
-              ))}
+              {parque.lotes.map((lote, i) => {
+                let bgColor = 'bg-green-100 text-green-800'
+                if (lote.estado === 'Vendido') bgColor = 'bg-red-100 text-red-800'
+                if (lote.estado === 'Separado') bgColor = 'bg-yellow-100 text-yellow-800'
+                return (
+                  <tr key={i} className="border-b hover:bg-gray-50">
+                    <td className="px-4 py-2 font-semibold">{lote.numero}</td>
+                    <td className="px-4 py-2">{lote.metros} m²</td>
+                    <td className="px-4 py-2">${(lote.precio / 1000000).toFixed(2)}M</td>
+                    <td className="px-4 py-2">
+                      <span className={`${bgColor} px-3 py-1 rounded-full text-sm font-semibold`}>
+                        {lote.estado}
+                      </span>
+                    </td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>

@@ -70,9 +70,9 @@ export default function AddLoteModal({ parques, onClose, onAdd }: AddLoteModalPr
           <h2 className="text-xl font-bold text-gray-900">Agregar Nuevo Lote</h2>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 transition"
+            className="text-gray-500 hover:text-gray-700 transition text-2xl"
           >
-            <X size={24} />
+            ✕
           </button>
         </div>
 
