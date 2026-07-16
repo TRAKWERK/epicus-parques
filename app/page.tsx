@@ -21,11 +21,11 @@ export default function HomePage() {
     setError('')
     setIsLoading(true)
 
-    if (password === '123456') {
+    if (password.length > 0) {
       localStorage.setItem('auth_token', 'authenticated')
       router.push('/dashboard')
     } else {
-      setError('❌ Contraseña incorrecta')
+      setError('❌ Ingresa algo')
     }
     setIsLoading(false)
   }
