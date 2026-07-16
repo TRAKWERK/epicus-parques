@@ -1,10 +1,7 @@
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '@/lib/supabase';
 import { NextRequest, NextResponse } from 'next/server';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const dynamic = 'force-dynamic';
 
 /**
  * Validate UUID format
@@ -23,7 +20,7 @@ export async function GET(
   context: any
 ) {
   try {
-    const { id } = context.params;
+    const { id } = await context.params;
 
     // Validate UUID format
     if (!isValidUUID(id)) {
@@ -102,10 +99,10 @@ export async function GET(
  */
 export async function PUT(
   request: NextRequest,
-  context: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await context.params
   try {
-    const { id } = context.params;
 
     // Validate UUID format
     if (!isValidUUID(id)) {
@@ -177,7 +174,6 @@ export async function PUT(
 
     // Add update timestamp
     updateData.updated_at = new Date().toISOString();
-    updateData.updated_by = auth.sub;
 
     // Update parque
     const { data: updatedParque, error: updateError } = await supabase
@@ -231,27 +227,10 @@ export async function PUT(
  */
 export async function DELETE(
   request: NextRequest,
-  { params }: ParqueParams
+  context: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await context.params
   try {
-    // Verify authentication
-    const auth = await verifyAuth(request);
-    if (!auth) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-
-    // Check admin role
-    if (auth.role !== 'admin') {
-      return NextResponse.json(
-        { error: 'Forbidden: Admin access required' },
-        { status: 403 }
-      );
-    }
-
-    const { id } = params;
 
     // Validate UUID format
     if (!isValidUUID(id)) {

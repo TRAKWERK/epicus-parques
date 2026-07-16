@@ -1,0 +1,30 @@
+
+> trakwerk-parques@0.1.0 build
+> next build
+
+▲ Next.js 16.2.10 (Turbopack)
+- Environments: .env.local
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+✓ Compiled successfully in 2.2s
+  Running TypeScript ...
+  Finished TypeScript in 3.3s ...
+  Collecting page data using 11 workers ...
+Error: Missing Supabase environment variables
+    at module evaluation (C:\Users\Usuario\trakwerk-parques\.next\server\chunks\[root-of-the-server]__1aingdk._.js:1:1138)
+    at instantiateModule (C:\Users\Usuario\trakwerk-parques\.next\server\chunks\[turbopack]_runtime.js:853:9)
+    at getOrInstantiateModuleFromParent (C:\Users\Usuario\trakwerk-parques\.next\server\chunks\[turbopack]_runtime.js:877:12)
+    at Context.esmImport [as i] (C:\Users\Usuario\trakwerk-parques\.next\server\chunks\[turbopack]_runtime.js:281:20)
+    at module evaluation (C:\Users\Usuario\trakwerk-parques\.next\server\chunks\[root-of-the-server]__1aingdk._.js:1:1503)
+    at instantiateModule (C:\Users\Usuario\trakwerk-parques\.next\server\chunks\[turbopack]_runtime.js:853:9)
+    at instantiateRuntimeModule (C:\Users\Usuario\trakwerk-parques\.next\server\chunks\[turbopack]_runtime.js:882:12)
+    at getOrInstantiateRuntimeModule (C:\Users\Usuario\trakwerk-parques\.next\server\chunks\[turbopack]_runtime.js:895:12)
+    at Object.m (C:\Users\Usuario\trakwerk-parques\.next\server\chunks\[turbopack]_runtime.js:898:18)
+    at Object.<anonymous> (C:\Users\Usuario\trakwerk-parques\.next\server\app\api\parques\route.js:6:3)
+
+> Build error occurred
+Error: Failed to collect page data for /api/parques
+    at ignore-listed frames {
+  type: 'Error'
+}

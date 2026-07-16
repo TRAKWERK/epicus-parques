@@ -206,9 +206,9 @@ export default function ConsultasPage() {
   const estadoIcon = (estado: string) => {
     switch (estado) {
       case 'pendiente':
-        return <Clock className="w-4 h-4" />;
+        return <span>⏱️</span>;
       case 'respondida':
-        return <CheckCircle2 className="w-4 h-4" />;
+        return <span>✅</span>;
       case 'archivada':
         return null;
       default:
@@ -239,13 +239,13 @@ export default function ConsultasPage() {
           </div>
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-4">
             <div className="text-sm font-medium text-yellow-600 flex items-center gap-2">
-              <Clock className="w-4 h-4" /> Pendientes
+              ⏱️ Pendientes
             </div>
             <div className="text-2xl font-bold text-yellow-700 mt-1">{stats.pendientes}</div>
           </div>
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-4">
             <div className="text-sm font-medium text-green-600 flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4" /> Respondidas
+              ✅ Respondidas
             </div>
             <div className="text-2xl font-bold text-green-700 mt-1">{stats.respondidas}</div>
           </div>
@@ -254,7 +254,7 @@ export default function ConsultasPage() {
         {/* Filters */}
         <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 mb-6">
           <div className="flex items-center gap-2 mb-4">
-            <Filter className="w-5 h-5 text-slate-600" />
+            <span className="text-slate-600 text-lg">🔍</span>
             <h2 className="text-lg font-semibold text-slate-900">Filtros</h2>
           </div>
 
@@ -296,7 +296,7 @@ export default function ConsultasPage() {
 
             {/* Fecha Desde */}
             <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-slate-400" />
+              <span className="text-slate-400">📅</span>
               <input
                 type="date"
                 value={filterFechaDesde}
@@ -307,7 +307,7 @@ export default function ConsultasPage() {
 
             {/* Fecha Hasta */}
             <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-slate-400" />
+              <span className="text-slate-400">📅</span>
               <input
                 type="date"
                 value={filterFechaHasta}
@@ -328,7 +328,7 @@ export default function ConsultasPage() {
               onClick={handleExportCSV}
               className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium flex items-center gap-2 transition-colors"
             >
-              <Download className="w-4 h-4" />
+              <span>📥</span>
               Exportar CSV
             </button>
           </div>
@@ -404,7 +404,7 @@ export default function ConsultasPage() {
                             onClick={() => handleViewDetail(consultation)}
                             className="px-3 py-1 text-blue-600 border border-blue-300 rounded-lg hover:bg-blue-50 text-sm font-medium flex items-center gap-1 transition-colors"
                           >
-                            <Eye className="w-4 h-4" />
+                            <span>👁️</span>
                             Ver
                           </button>
                           {consultation.estado === 'pendiente' && (
@@ -412,7 +412,7 @@ export default function ConsultasPage() {
                               onClick={() => handleOpenResponse(consultation)}
                               className="px-3 py-1 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm font-medium flex items-center gap-1 transition-colors"
                             >
-                              <Mail className="w-4 h-4" />
+                              <span>✉️</span>
                               Responder
                             </button>
                           )}
@@ -513,7 +513,7 @@ export default function ConsultasPage() {
               {/* Estado */}
               {selectedConsultation.estado === 'pendiente' && (
                 <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 flex items-center gap-3">
-                  <AlertCircle className="w-5 h-5 text-yellow-600 flex-shrink-0" />
+                  <span className="text-yellow-600 text-lg flex-shrink-0">⚠️</span>
                   <span className="text-yellow-800 font-medium">
                     Esta consulta aún no ha sido respondida
                   </span>
@@ -530,7 +530,7 @@ export default function ConsultasPage() {
                     }}
                     className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors"
                   >
-                    <Mail className="w-4 h-4" />
+                    <span>✉️</span>
                     Responder Consulta
                   </button>
                 )}
@@ -613,7 +613,7 @@ export default function ConsultasPage() {
                   disabled={!responseText.trim()}
                   className="bg-green-600 hover:bg-green-700 text-white disabled:opacity-50 disabled:cursor-not-allowed px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors"
                 >
-                  <Send className="w-4 h-4" />
+                  <span>➡️</span>
                   Enviar Respuesta
                 </button>
                 <button

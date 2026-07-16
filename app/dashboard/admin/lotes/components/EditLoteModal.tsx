@@ -81,7 +81,7 @@ export default function EditLoteModal({
             onClick={onClose}
             className="text-gray-500 hover:text-gray-700 transition"
           >
-            <X size={24} />
+            ✕
           </button>
         </div>
 

@@ -263,7 +263,7 @@ export default function LotesPage() {
           onClick={() => setShowAddModal(true)}
           className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
         >
-          <Plus size={20} />
+          ➕
           Agregar Lote
         </button>
       </div>
@@ -282,7 +282,7 @@ export default function LotesPage() {
       <div className="bg-white rounded-lg shadow p-4">
         <div className="flex items-center justify-between mb-4">
           <h2 className="font-semibold text-gray-900 flex items-center gap-2">
-            <Filter size={18} />
+            🔍
             Filtros
           </h2>
           {(searchTerm ||
@@ -306,10 +306,7 @@ export default function LotesPage() {
               Buscar
             </label>
             <div className="relative">
-              <Search
-                size={18}
-                className="absolute left-3 top-3 text-gray-400"
-              />
+              🔍
               <input
                 type="text"
                 placeholder="Número o ubicación..."
@@ -529,21 +526,21 @@ export default function LotesPage() {
                           title="Ver"
                           className="p-2 text-blue-600 hover:bg-blue-50 rounded transition"
                         >
-                          <Eye size={18} />
+                          👁️
                         </button>
                         <button
                           onClick={() => handleEditClick(lote)}
                           title="Editar"
                           className="p-2 text-amber-600 hover:bg-amber-50 rounded transition"
                         >
-                          <Edit2 size={18} />
+                          ✏️
                         </button>
                         <button
                           onClick={() => handleDeleteLote(lote.id)}
                           title="Eliminar"
                           className="p-2 text-red-600 hover:bg-red-50 rounded transition"
                         >
-                          <Trash2 size={18} />
+                          🗑️
                         </button>
                       </div>
                     </td>
@@ -575,7 +572,7 @@ export default function LotesPage() {
               disabled={currentPage === 1}
               className="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition"
             >
-              <ChevronLeft size={18} />
+              ◀
               Anterior
             </button>
 
@@ -614,7 +611,7 @@ export default function LotesPage() {
               className="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition"
             >
               Siguiente
-              <ChevronRight size={18} />
+              ▶
             </button>
           </div>
         </div>

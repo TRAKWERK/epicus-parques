@@ -19,11 +19,11 @@ interface AddLoteModalProps {
 }
 
 export default function AddLoteModal({ parques, onClose, onAdd }: AddLoteModalProps) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<any>({
     numero: '',
     parque: '',
     precio: '',
-    estado: 'disponible' as const,
+    estado: 'disponible',
     disponible: true,
     superficie: '',
     ubicacion: '',

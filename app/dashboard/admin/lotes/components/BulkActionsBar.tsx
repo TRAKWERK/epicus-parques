@@ -35,9 +35,9 @@ export default function BulkActionsBar({
             onClick={() => setShowStatusDropdown(!showStatusDropdown)}
             className="flex items-center gap-2 px-3 py-2 bg-white text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition font-medium text-sm"
           >
-            <Edit3 size={16} />
+            ✏️
             Cambiar Estado
-            <ChevronDown size={16} />
+            ▼
           </button>
 
           {showStatusDropdown && (
@@ -63,7 +63,7 @@ export default function BulkActionsBar({
           onClick={onDelete}
           className="flex items-center gap-2 px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-medium text-sm"
         >
-          <Trash2 size={16} />
+          🗑️
           Eliminar
         </button>
       </div>

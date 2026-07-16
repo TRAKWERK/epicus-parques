@@ -1,10 +1,7 @@
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '@/lib/supabase';
 import { NextRequest, NextResponse } from 'next/server';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const dynamic = 'force-dynamic';
 
 /**
  * Validate UUID format
@@ -23,7 +20,7 @@ export async function GET(
   context: any
 ) {
   try {
-    const { id } = context.params;
+    const { id } = await context.params;
 
     // Validate UUID format
     if (!isValidUUID(id)) {
@@ -104,10 +101,10 @@ export async function GET(
  */
 export async function PUT(
   request: NextRequest,
-  context: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = context.params;
+    const { id } = await context.params;
 
     // Validate UUID format
     if (!isValidUUID(id)) {
@@ -267,10 +264,10 @@ export async function PUT(
  */
 export async function DELETE(
   request: NextRequest,
-  context: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = context.params;
+    const { id } = await context.params;
 
     // Validate UUID format
     if (!isValidUUID(id)) {

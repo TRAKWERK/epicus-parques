@@ -257,7 +257,7 @@ export default function ReportesPage() {
                       onClick={() => exportCSV(filteredVentas, 'ventas.csv')}
                       className="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors text-sm font-medium"
                     >
-                      <Download size={16} />
+                      📥
                       Exportar CSV
                     </button>
                   </div>
@@ -392,7 +392,7 @@ export default function ReportesPage() {
                     onClick={() => exportCSV(CONSULTAS, 'consultas.csv')}
                     className="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors text-sm font-medium"
                   >
-                    <Download size={16} />
+                    📥
                     Exportar CSV
                   </button>
                 </div>
@@ -555,7 +555,7 @@ export default function ReportesPage() {
                     }
                     className="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors text-sm font-medium"
                   >
-                    <Download size={16} />
+                    📥
                     Exportar CSV
                   </button>
                 </div>
