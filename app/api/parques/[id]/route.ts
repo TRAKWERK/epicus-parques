@@ -1,44 +1,15 @@
 import { createClient } from '@supabase/supabase-js';
 import { NextRequest, NextResponse } from 'next/server';
-import { jwtVerify } from 'jose';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-const jwtSecret = new TextEncoder().encode(process.env.JWT_SECRET || 'your-secret-key');
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
-
-interface AuthPayload {
-  sub: string;
-  role: string;
-  iat: number;
-}
 
 interface ParqueParams {
   params: {
     id: string;
   };
-}
-
-/**
- * Verify JWT token from Authorization header
- */
-async function verifyAuth(request: NextRequest): Promise<AuthPayload | null> {
-  try {
-    const authHeader = request.headers.get('authorization');
-
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return null;
-    }
-
-    const token = authHeader.substring(7);
-    const verified = await jwtVerify(token, jwtSecret);
-
-    return verified.payload as AuthPayload;
-  } catch (error) {
-    console.error('JWT verification failed:', error);
-    return null;
-  }
 }
 
 /**
@@ -58,15 +29,6 @@ export async function GET(
   { params }: ParqueParams
 ) {
   try {
-    // Verify authentication
-    const auth = await verifyAuth(request);
-    if (!auth) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-
     const { id } = params;
 
     // Validate UUID format
@@ -149,23 +111,6 @@ export async function PUT(
   { params }: ParqueParams
 ) {
   try {
-    // Verify authentication
-    const auth = await verifyAuth(request);
-    if (!auth) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-
-    // Check admin role
-    if (auth.role !== 'admin') {
-      return NextResponse.json(
-        { error: 'Forbidden: Admin access required' },
-        { status: 403 }
-      );
-    }
-
     const { id } = params;
 
     // Validate UUID format
