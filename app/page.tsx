@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { ChevronDown, MapPin, Home, TrendingUp, Phone, Mail, MapPinIcon, CheckCircle } from 'lucide-react'
 
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState('')

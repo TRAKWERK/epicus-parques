@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Calendar, Mail, Filter, Download, Eye, Send, CheckCircle2, Clock, AlertCircle } from 'lucide-react';
 
 interface Consultation {
   id: string;

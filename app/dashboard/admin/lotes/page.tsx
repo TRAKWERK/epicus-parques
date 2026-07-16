@@ -1,16 +1,6 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import {
-  Search,
-  Plus,
-  Edit2,
-  Trash2,
-  Eye,
-  ChevronLeft,
-  ChevronRight,
-  Filter,
-} from 'lucide-react';
 import AddLoteModal from './components/AddLoteModal';
 import EditLoteModal from './components/EditLoteModal';
 import ViewLoteModal from './components/ViewLoteModal';

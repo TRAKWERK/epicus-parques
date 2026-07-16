@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Download } from 'lucide-react';
 
 type ReportTab = 'ventas' | 'consultas' | 'disponibilidad';
 

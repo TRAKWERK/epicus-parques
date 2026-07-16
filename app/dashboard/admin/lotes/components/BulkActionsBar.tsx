@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Trash2, Edit3, ChevronDown } from 'lucide-react';
 
 interface BulkActionsBarProps {
   selectedCount: number;
