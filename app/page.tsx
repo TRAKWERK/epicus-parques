@@ -264,7 +264,7 @@ export default function HomePage() {
                   <div className="text-5xl mb-4">{parque.imagen}</div>
                   <h3 className="text-2xl font-bold mb-2">{parque.nombre}</h3>
                   <div className="flex items-center justify-center gap-2 opacity-90">
-                    <MapPin size={18} />
+                    <span>📍</span>
                     <p>{parque.ubicacion}</p>
                   </div>
                 </div>
@@ -421,12 +421,11 @@ export default function HomePage() {
                   <span className="text-lg font-semibold text-gray-900 text-left">
                     {faq.pregunta}
                   </span>
-                  <ChevronDown
-                    size={20}
-                    className={`text-gray-600 transition-transform ${
+                  <span className={`text-xl transition-transform ${
                       expandedFaq === idx ? 'transform rotate-180' : ''
-                    }`}
-                  />
+                    }`}>
+                    ▼
+                  </span>
                 </button>
 
                 {expandedFaq === idx && (
@@ -481,15 +480,15 @@ export default function HomePage() {
               <h4 className="text-white font-bold mb-4">Contacto</h4>
               <ul className="space-y-3 text-sm">
                 <li className="flex gap-2">
-                  <Phone size={16} className="flex-shrink-0 mt-0.5" />
+                  <span className="flex-shrink-0 mt-0.5">📱</span>
                   <a href="tel:+528184606294" className="hover:text-white transition">(818) 460-6294</a>
                 </li>
                 <li className="flex gap-2">
-                  <Mail size={16} className="flex-shrink-0 mt-0.5" />
+                  <span className="flex-shrink-0 mt-0.5">✉️</span>
                   <a href="mailto:contacto@epicus.com" className="hover:text-white transition">contacto@epicus.com</a>
                 </li>
                 <li className="flex gap-2">
-                  <MapPin size={16} className="flex-shrink-0 mt-0.5" />
+                  <span className="flex-shrink-0 mt-0.5">📍</span>
                   <span>Monterrey, Nuevo León</span>
                 </li>
               </ul>
