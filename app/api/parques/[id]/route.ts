@@ -6,12 +6,6 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-interface ParqueParams {
-  params: {
-    id: string;
-  };
-}
-
 /**
  * Validate UUID format
  */
@@ -26,7 +20,7 @@ function isValidUUID(uuid: string): boolean {
  */
 export async function GET(
   request: NextRequest,
-  { params }: ParqueParams
+  { params }: { params: { id: string } }
 ) {
   try {
     const { id } = params;
@@ -108,7 +102,7 @@ export async function GET(
  */
 export async function PUT(
   request: NextRequest,
-  { params }: ParqueParams
+  { params }: { params: { id: string } }
 ) {
   try {
     const { id } = params;

@@ -6,12 +6,6 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-interface LoteParams {
-  params: {
-    id: string;
-  };
-}
-
 /**
  * Validate UUID format
  */
@@ -26,7 +20,7 @@ function isValidUUID(uuid: string): boolean {
  */
 export async function GET(
   request: NextRequest,
-  { params }: LoteParams
+  { params }: { params: { id: string } }
 ) {
   try {
     const { id } = params;
@@ -110,7 +104,7 @@ export async function GET(
  */
 export async function PUT(
   request: NextRequest,
-  { params }: LoteParams
+  { params }: { params: { id: string } }
 ) {
   try {
     const { id } = params;
@@ -273,7 +267,7 @@ export async function PUT(
  */
 export async function DELETE(
   request: NextRequest,
-  { params }: LoteParams
+  { params }: { params: { id: string } }
 ) {
   try {
     const { id } = params;
