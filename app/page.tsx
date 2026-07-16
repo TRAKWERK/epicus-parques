@@ -21,7 +21,7 @@ export default function HomePage() {
     setError('')
     setIsLoading(true)
 
-    if (password === 'Trakwerk72661%') {
+    if (password === 'admin') {
       localStorage.setItem('auth_token', 'authenticated')
       router.push('/dashboard')
     } else {
