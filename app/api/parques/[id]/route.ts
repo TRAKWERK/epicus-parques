@@ -20,10 +20,10 @@ function isValidUUID(uuid: string): boolean {
  */
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
-    const { id } = params;
+    const { id } = context.params;
 
     // Validate UUID format
     if (!isValidUUID(id)) {
@@ -102,10 +102,10 @@ export async function GET(
  */
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
-    const { id } = params;
+    const { id } = context.params;
 
     // Validate UUID format
     if (!isValidUUID(id)) {
