@@ -120,14 +120,29 @@ npm run lint        # Ejecutar linter
 
 ## 🚀 Deployment
 
-### Vercel (Recomendado)
-1. Push a GitHub: `git push origin main`
-2. Crea proyecto en [Vercel.com](https://vercel.com)
-3. Conecta con GitHub
-4. Agrega variables de entorno
-5. Deploy automático
+### Estado Actual
+✅ **Código en GitHub**: https://github.com/TRAKWERK/epicus-parques  
+✅ **Vercel Configurado**: https://epicus-parques.vercel.app (auto-deploy activo)  
+⏳ **Pendiente**: Crear BD en Supabase y agregar env vars
 
-Ver guía completa en: `DEPLOY-AUTOMATICO.md`
+### Pasos para Completar:
+
+**1. Crear proyecto en Supabase**
+   - Ve a https://supabase.com
+   - Crea nuevo proyecto (copia credenciales)
+
+**2. Ejecutar SQL setup**
+   - Copia contenido de `supabase-setup.sql`
+   - Pégalo en Supabase SQL Editor > New Query > Run
+
+**3. Agregar variables en Vercel**
+   - Settings > Environment Variables
+   - NEXT_PUBLIC_SUPABASE_URL
+   - NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+**4. Redeploy automático** ✨
+
+Ver guía completa en: `DEPLOYMENT-GUIDE.md`
 
 ## 📚 Documentación Adicional
 
