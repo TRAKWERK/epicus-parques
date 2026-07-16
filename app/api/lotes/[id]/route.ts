@@ -20,7 +20,7 @@ function isValidUUID(uuid: string): boolean {
  */
 export async function GET(
   request: NextRequest,
-  context: { params: { id: string } }
+  context: any
 ) {
   try {
     const { id } = context.params;
