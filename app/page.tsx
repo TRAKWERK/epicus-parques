@@ -4,16 +4,11 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 export default function HomePage() {
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
-    const auth = localStorage.getItem('auth_token')
-    if (auth) {
-      router.push('/dashboard')
-    }
+    localStorage.setItem('auth_token', 'authenticated')
+    router.push('/dashboard')
   }, [router])
 
   const handleLogin = async (e: React.FormEvent) => {
