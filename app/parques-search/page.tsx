@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { EMPRESAS, RANGOS_PRECIOS } from '@/app/data/parques'
 
+// Página de búsqueda con filtros
 export default function ParquesSearchPage() {
   const [empresaFilter, setEmpresaFilter] = useState('')
   const [parqueFilter, setParqueFilter] = useState('')
